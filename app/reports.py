@@ -141,7 +141,7 @@ async def generate_station_report(
                 
                 time_diff = time_difference(s1_time, s2_time)
                 
-                if (s1_date == s2_date and time_diff <= 120):  # 1.5 minutes
+                if (s1_date == s2_date and time_diff <= 20):  
                     logger.info(f"Found time match: {s1_time} vs {s2_time} (diff: {time_diff}s)")
                     
                     try:
