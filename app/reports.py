@@ -159,7 +159,7 @@ async def generate_station_report(
                             'lon_station1': s1.lon,
                             'lat_station2': s2.lat,
                             'lon_station2': s2.lon,
-                            'distance': distance,
+                            'distance': distance / 1000,  # Convert to kilometers
                             'comm_state': str(s1.comm_state),
                             'comm_state_value': comm_state_value
                         })
@@ -221,7 +221,7 @@ async def generate_station_report(
         headers = ['Serial', 'Date', 'Time', 'Frequency', 'RF Power', 
                   f'Lat ({station1})', f'Lon ({station1})', 
                   f'Lat ({station2})', f'Lon ({station2})', 
-                  'Distance (m)', 'Comm State']
+                  'Distance (km)', 'Comm State']
         
         for col, header in enumerate(headers, 1):
             cell = ws.cell(row=8, column=col, value=header)
