@@ -580,7 +580,8 @@ async def get_trajectories(
             models.LocationSample.sample_time,
             models.LocationSample.captured_at_utc,
             models.LocationSample.acc,
-            models.LocationSample.received_at
+            models.LocationSample.received_at,
+            models.LocationSample.comm_state
         ).filter(
             models.LocationSample.sample_date == target_date.strftime("%Y-%m-%d")
         )
@@ -635,7 +636,8 @@ async def get_trajectories(
                 'sample_time': row.sample_time,
                 'captured_at_utc': row.captured_at_utc,
                 'accuracy': float(row.acc),
-                'timestamp': timestamp
+                'timestamp': timestamp,
+                'comm_state' : row.comm_state
             })
         
         return {
@@ -676,7 +678,8 @@ async def get_trajectories_date_range(
             models.LocationSample.sample_time,
             models.LocationSample.captured_at_utc,
             models.LocationSample.acc,
-            models.LocationSample.received_at
+            models.LocationSample.received_at,
+            models.LocationSample.comm_state
         ).filter(
             models.LocationSample.sample_date.between(
                 start.strftime("%Y-%m-%d"), 
@@ -724,7 +727,8 @@ async def get_trajectories_date_range(
                 'sample_time': row.sample_time,
                 'captured_at_utc': row.captured_at_utc,
                 'accuracy': float(row.acc),
-                'timestamp': timestamp
+                'timestamp': timestamp,
+                'comm_state' : row.comm_state
             })
         
         return {
